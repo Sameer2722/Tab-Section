@@ -1,0 +1,307 @@
+#about .content-wrapper {
+    padding: 20px;
+    border: 1px solid #eae9ec;
+}
+/* ==========  */
+.course-wrapper {
+    display: flex;
+    column-gap: 40px;
+    width: 100%;
+    justify-content: center;
+}
+.tab-wrapper {
+    max-width: 66%;
+    width: 100%;
+}
+.course-details {
+    max-width: 33%;
+    width: 100%;
+    border: 1px solid #eae9ec;
+    height: 280px;
+    margin-top: 20px;
+}
+.navtabs {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  position: relative;
+}
+.navtab {
+  text-align: center;
+  min-width: 277px;
+  margin: 0;
+  padding: 10px 50px;
+  cursor: pointer;
+  color: #000;
+  transition: color .3s;
+  font-weight: 600;
+  font-family: Livvic Bold;
+  border: 1px solid #dbd8d8;
+}
+.navtab:hover {
+  background-color:#f5e600;
+  color: #000;
+}
+.navtab.active {
+  background-color:#f5e600;
+  color: #000;
+  font-weight: 600;
+}
+.underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: #007BFF;
+  transition: left 0.3s ease, width 0.3s ease;
+}
+.content {
+  display: none;
+  padding: 20px 20px 20px;
+  text-align: left;
+  border: 1px solid #eae9ec;
+  margin-top:30px;
+}
+#home p span{
+  font-size:16px !important;
+  color:#000;
+}
+.content.active {
+  display: block;
+}
+.content h2 {
+ font-family: 'Livvic Bold' !important;
+}
+.content h4 {
+ font-family: 'Livvic Bold' !important;
+}
+.content p{
+  font-family: 'Body font' !important;
+  color:#000;
+}
+.content ul li{
+  font-family: 'Body font' !important;
+  color:#000;
+}
+.elem_tab_3 {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+.elem_tab_3 .coach-img-box {
+    height: 80px;
+    width: 80px;
+}
+.elem_tab_3 .coach-img-box img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.coach-name-wrapper h2 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Livvic Semibold';
+}
+.coach-name-wrapper p {
+    color: #000;
+}
+
+.course-details-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eae9ec;
+    padding: 0 16px;
+}
+.course-details-content h2{
+  font-size:16px;
+  font-weight:500;
+  font-family: 'Livvic Semibold' !important;
+}
+.course-details-content h4{
+  font-size:16px;
+  font-family: 'Livvic Semibold' !important;
+}
+.course-details-content .coach-name{
+  font-weight:600;
+}
+
+button.enroll-course {
+    min-width: 392px;
+    background-color: #e0d2e5;
+    padding: 15px 25px;
+    width: 100%;
+    border: 0px;
+    color: #000;
+    font-size: 16px;
+    font-family: 'Livvic Semibold';
+    border-radius:8px;
+}
+.enroll-form{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+div#home .enroll-form {
+  justify-content: left;
+  padding-left:0;
+}
+div#home .enroll-form button.enroll-course {
+    background-color: #f5e600;
+    min-width: 175px;
+}
+.tab-2-header-wrapper .content-header h4 {
+    margin: 0 0 4px;
+    font-size: 20px;
+}
+.tab-2-header-wrapper .content-header p{
+   margin:0 0 16px 0;
+}
+.tab-2-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.tab-2-header-wrapper .header-time{
+   color:#f5e600;
+   font-size:16px;
+}
+.tab-2-content-wrapper .content-title-time {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+.tab-2-content-wrapper .content-title-time h4 {
+    font-size: 16px;
+}
+.tab-2-header-wrapper h3 {
+    margin: 0;
+    color: #f5e600;
+    font-family: Livvic Bold!important;
+    font-size: 16px;
+}
+
+.tab-2-content-wrapper .content-title-time h4 , .tab-2-content-wrapper .content-title-time p{
+  margin:0;
+}
+.bottom-border{
+  border-bottom:1px solid #eae9ec;
+}
+div#about {
+    padding: 0px;
+    border: 0px;
+}
+.content .tab-2-content-wrapper {
+    padding: 20px;
+    border: 1px solid #eae9ec;
+    margin-bottom:30px;
+}
+/* Media Querry  */
+
+@media screen and (max-width:1400px){
+button.enroll-course {
+    min-width: 370px;
+}
+}
+@media screen and (max-width:1350px){
+.navtab {
+    min-width: 33.3%;
+}
+}
+@media screen and (max-width:1325px){
+button.enroll-course {
+    min-width: 350px;
+}
+}
+@media screen and (max-width:1250px){
+button.enroll-course {
+    min-width: 330px;
+}
+}
+@media screen and (max-width:1200px){
+button.enroll-course {
+    min-width: 120px;
+}
+
+}
+
+@media screen and (max-width:1100px){
+.navtab {
+    padding: 10px 0;
+}
+}
+@media screen and (max-width:1024px){
+  .course-wrapper {
+    column-gap: 30px;
+}
+}
+@media screen and (max-width:900px){
+.course-wrapper {
+    flex-direction: column;
+    row-gap: 20px;
+}
+.tab-wrapper {
+    max-width: 100%;
+}
+ .course-details {
+    max-width: 100%;
+}
+.tab-2-content-wrapper:nth-child(4) {
+    margin-bottom: 0;
+}
+}
+
+@media screen and (max-width:776px){
+.product-title-wrapper {
+    padding-bottom: 40px;
+}
+.product-title-wrapper h1 {
+    font-size: 40px;
+}
+}
+
+@media screen and (max-width:768px){
+#shopify-section-course-tab .course .page-width {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+}
+
+@media screen and (max-width:600px){
+#shopify-section-course-tab .course .page-width {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.product-title-wrapper h1 {
+    font-size: 30px;
+}
+.product-title-wrapper {
+    max-width: 95%;
+    margin-top: -200px;
+    padding-bottom: 80px;
+}
+.content .tab-2-content-wrapper {
+    padding: 12px;
+}
+  .tab-2-header-wrapper .content-header h4 {
+    font-size: 14px;
+}
+.tab-2-content-wrapper .content-title-time h4 {
+    font-size: 14px;
+}
+.tab-2-header-wrapper .content-header p {
+    font-size: 14px;
+}
+.navtab {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+}
+
+
