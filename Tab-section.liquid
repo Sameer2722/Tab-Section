@@ -1,0 +1,230 @@
+{{ 'tab-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  
+{%- endstyle -%}
+
+<div class="course color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  
+<div class="page-width">
+  <div class="course-wrapper">
+
+    <div class="tab-wrapper">
+    <div class="navtabs">
+      <div class="navtab active" data-target="home">{{ section.settings.tab_title }}</div>
+      <div class="navtab" data-target="about">{{ section.settings.tab_title_2 }}</div>
+      <div class="navtab" data-target="contact">{{ section.settings.tab_title_3 }}</div>
+    </div>
+
+    <div id="home" class="content active">
+      <p>{{ product.description }}</p>
+
+      <form class="enroll-form" action="/cart/add" method="post" id="product-form- {{ product.id }}">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+      <div>
+      <button type="submit" class="enroll-course" name="add">{{ section.settings.tab_content_button }}</button>
+      </div>
+      </form>
+      
+    </div>
+      
+    <div id="about" class="content multiblock">
+     <div class="content-wrapper">
+     {{ product.metafields.custom.course_key_learning | metafield_tag }}
+     </div>
+    </div>
+
+      
+    <div id="contact" class="content coach-name-tab">
+      <div class="elem_tab_3">
+        <div class="coach-img-box">
+     {% if section.settings.coach_img !=blank %}
+    {{ section.settings.coach_img | img_url:'master' | img_tag }}
+      {% endif %}
+        </div>
+      <div class="coach-name-wrapper">
+      <h2>{{ section.settings.coach_name }}</h2>
+      <p>{{ section.settings.coach_desc }}</p>
+      </div>
+    </div>
+      <p>{{ section.settings.tab_content_3 }}</p>
+    </div>
+
+    </div>
+
+    <div class="course-details">
+      
+      <div class="course-details-content">
+        <h2 class="program-price">Price</h2>
+        <h4>{{ product.price | money_with_currency }}</h4>    
+    </div>
+      <div class="course-details-content">
+        <h2 class="coach-name">Coach</h2>
+        <h4>{{ product.metafields.custom.coach_name }}</h4>    
+    </div>
+      <div class="course-details-content">
+        <h2>Duration</h2>
+        <h4>{{ product.metafields.custom.duration }}</h4>    
+    </div>
+      
+      <form class="enroll-form" action="/cart/add" method="post" id="product-form- {{ product.id }}">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+      <div>
+      <button type="submit" class="enroll-course" name="add">Enroll</button>
+      </div>
+      </form>
+
+  </div>
+  
+</div>
+
+</div>
+</div>
+
+<script>
+
+const tabs = document.querySelectorAll('.navtab');
+const contents = document.querySelectorAll('.content');
+const underline = document.querySelector('.underline');
+
+function updateUnderline() {
+  const activeTab = document.querySelector('.navtab.active');
+  underline.style.width = `${activeTab.offsetWidth}px`;
+  underline.style.left = `${activeTab.offsetLeft}px`;
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.getAttribute('data-target');
+    contents.forEach(content => {
+      if (content.id === target) {
+        content.classList.add('active');
+      } else {
+        content.classList.remove('active');
+      }
+    });
+    updateUnderline();
+  });
+});
+
+window.addEventListener('resize', updateUnderline);
+updateUnderline();
+  
+</script>
+
+
+{% schema %}
+{
+  "name": "Tab Section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 52
+    },
+     {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_title",
+      "label": "Tab 1 Title",
+      "default": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_content_button",
+      "label": "Button Label",
+      "default": "Button Label"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+     {
+      "type": "text",
+      "id": "tab_title_2",
+      "label": "Tab 2 Title ",
+      "default": "Tab 2"
+    },
+    {
+      "type": "header",
+      "content": "Tab 3"
+    },
+     {
+      "type": "text",
+      "id": "tab_title_3",
+      "label": "Tab 3 Title",
+      "default": "Tab 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "coach_img",
+      "label": "Choose Image"
+    },
+     {
+      "type": "text",
+      "id": "coach_name",
+      "label": "Coach Name",
+      "default": "Coach Name"
+    },
+    {
+      "type": "text",
+      "id": "coach_desc",
+      "label": "Coach Description",
+      "default": "Coach description"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_content_3",
+      "label": "Tab 3 Content"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Tab Section",
+    }
+  ]
+}
+{% endschema %}
